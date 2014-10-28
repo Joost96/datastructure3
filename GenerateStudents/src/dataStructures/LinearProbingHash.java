@@ -44,20 +44,22 @@ public class LinearProbingHash<Key, Value> {
         M = t.M;
     }
 
-    public void put(Key key, Value val) {
+    public int put(Key key, Value val) {
         if (N >= M / 2) {
             resize(2 * M); // double M (see text)
         }
-        int i;
+        int i , j = 0;
         for (i = hash(key); keys[i] != null; i = (i + 1) % M) {
             if (keys[i].equals(key)) {
                 vals[i] = val;
-                return;
+                return 0;
             }
+            j++;
         }
         keys[i] = key;
         vals[i] = val;
         N++;
+        return j;
     }
 
     public Value get(Key key) {

@@ -1,5 +1,6 @@
-
 package generatestudents;
+
+import dataStructures.*;
 
 /**
  *
@@ -13,13 +14,14 @@ public class GenerateStudents {
     public static void main(String[] args) {
         StudentList students = new StudentList(10000);
         //System.out.println(students);
-        
+        int collisions=0;
+        LinearProbingHash hash = new LinearProbingHash(10501);
         Student[] student = students.getList();
-         for (int i = 0; i < student.length; i++) {
-            int value = Math.abs(student[i].hash() %97);
-
-            System.out.println(value);
+        for (Student student1 : student) {
+            collisions += hash.put(student1, student1.getEcts());
         }
+        System.out.println(collisions);
+        
     }
-    
+
 }

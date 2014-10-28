@@ -34,12 +34,12 @@ public class Student {
         return "Student{" + "ldap=" + ldap + ", ects=" + ects + '}';
     }
 
-    public int hash() {
+    public int hashCode() {
 
         int hashcode = 0;
-        int mod = 31;
+        int mod = 509;
         int nrValue = 29;
-        for (int i = 0; i < ldap.length(); i++) {
+        for (int i = 1; i <= ldap.length(); i++) {
             hashcode = (nrValue % mod + ldap.charAt(i)* hashcode);
         }
         return hashcode;
