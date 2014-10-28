@@ -1,12 +1,13 @@
-
 package generatestudents;
 
 /**
- * Student consists in this example only of an ldap and the amount of ects earned.
- * 
+ * Student consists in this example only of an ldap and the amount of ects
+ * earned.
+ *
  * @author breud
  */
 public class Student {
+
     private final String ldap;
     private final int ects;
 
@@ -25,11 +26,22 @@ public class Student {
 
     /**
      * Converts the student to a string.
-     * 
+     *
      * @return the converted student
      */
     @Override
     public String toString() {
         return "Student{" + "ldap=" + ldap + ", ects=" + ects + '}';
+    }
+
+    public int hash() {
+
+        int hashcode = 0;
+        int mod = 31;
+        int nrValue = 29;
+        for (int i = 0; i < ldap.length(); i++) {
+            hashcode = (nrValue % mod + ldap.charAt(i)* hashcode);
+        }
+        return hashcode;
     }
 }
