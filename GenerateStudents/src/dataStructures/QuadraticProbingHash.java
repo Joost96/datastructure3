@@ -20,7 +20,7 @@ public class QuadraticProbingHash<Key, Value> {
         keys = (Key[]) new Object[M];
         vals = (Value[]) new Object[M];
     }
-    
+
     public QuadraticProbingHash(int M) {
         this.M = M;
         keys = (Key[]) new Object[M];
@@ -48,12 +48,13 @@ public class QuadraticProbingHash<Key, Value> {
         if (N >= M / 2) {
             resize(2 * M); // double M (see text)
         }
-        int i;
-        for (i = hash(key); keys[i] != null; i = (i + 1) % M) {
+        int i , j=1;
+        for (i = hash(key); keys[i] != null; i = (int) (i + Math.pow(j, 2)) % M) {
             if (keys[i].equals(key)) {
                 vals[i] = val;
                 return;
             }
+            j++;
         }
         keys[i] = key;
         vals[i] = val;
@@ -61,10 +62,12 @@ public class QuadraticProbingHash<Key, Value> {
     }
 
     public Value get(Key key) {
-        for (int i = hash(key); keys[i] != null; i = (i + 1) % M) {
+        int i, j=1;
+        for (i = hash(key); keys[i] != null; i = (int) (i + Math.pow(j, 2)) % M) {
             if (keys[i].equals(key)) {
                 return vals[i];
             }
+            j++;
         }
         return null;
     }
