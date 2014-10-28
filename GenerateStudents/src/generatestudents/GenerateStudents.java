@@ -15,7 +15,7 @@ public class GenerateStudents {
         StudentList students = new StudentList(10000);
         //System.out.println(students);
         int collisions=0;
-        LinearProbingHash hash = new LinearProbingHash(10501);
+        QuadraticProbingHash hash = new QuadraticProbingHash(10501);
         Student[] student = students.getList();
         for (Student student1 : student) {
             collisions += hash.put(student1, student1.getEcts());

@@ -37,9 +37,9 @@ public class Student {
     public int hashCode() {
 
         int hashcode = 0;
-        int mod = 509;
-        int nrValue = 29;
-        for (int i = 1; i <= ldap.length(); i++) {
+        int mod = 443;
+        int nrValue = 37;
+        for (int i = 0; i < ldap.length(); i++) {
             hashcode = (nrValue % mod + ldap.charAt(i)* hashcode);
         }
         return hashcode;
