@@ -5,6 +5,8 @@
  */
 package dataStructures;
 
+import generatestudents.Student;
+
 /**
  *
  * @author Joost
@@ -28,7 +30,8 @@ public class LinearProbingHash<Key, Value> {
     }
 
     private int hash(Key key) {
-        return (key.hashCode() & 0x7fffffff) % M;
+        Student s = new Student(key.toString(), 0);
+        return (s.hash() & 0x7fffffff) % M;
     }
 
     private void resize(int cap) {

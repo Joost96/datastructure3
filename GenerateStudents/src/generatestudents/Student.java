@@ -34,7 +34,7 @@ public class Student {
         return "Student{" + "ldap=" + ldap + ", ects=" + ects + '}';
     }
 
-    public int hashCode() {
+    public int hash() {
 
         int hashcode = 0;
         int mod = 443;

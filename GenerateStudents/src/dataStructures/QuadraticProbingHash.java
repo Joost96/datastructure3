@@ -5,6 +5,8 @@
  */
 package dataStructures;
 
+import generatestudents.Student;
+
 /**
  *
  * @author Joost
@@ -27,8 +29,9 @@ public class QuadraticProbingHash<Key, Value> {
         vals = (Value[]) new Object[M];
     }
 
-    private int hash(Key key) {
-        return (key.hashCode() & 0x7fffffff) % M;
+     private int hash(Key key) {
+        Student s = new Student(key.toString(), 0);
+        return (s.hash() & 0x7fffffff) % M;
     }
 
     private void resize(int cap) {
