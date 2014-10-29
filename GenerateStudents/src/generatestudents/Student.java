@@ -36,11 +36,11 @@ public class Student {
 
     public int hash() {
 
-        int hashcode = 0;
+        int hashcode = 31;
         int mod = 443;
         int nrValue = 37;
         for (int i = 0; i < ldap.length(); i++) {
-            hashcode = (nrValue % mod + ldap.charAt(i)* hashcode);
+            hashcode = ((nrValue % (mod+hashcode % nrValue)) + ldap.charAt(i)* hashcode)+hashcode % mod;
         }
         return hashcode;
     }
